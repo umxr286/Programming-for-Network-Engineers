@@ -1,0 +1,70 @@
+from netmiko import ConnectHandler
+# this function is to run SSH connection
+def ssh_connection():
+    # device parameters
+    device = {
+        'device_type' : 'cisco_ios_SSH',
+        'host' : '192.168.56.101',
+        'username' : 'cisco',
+        'password' : 'cisco123!',
+        'secret' : 'class123!',
+    }
+# establishes SSH connection
+ssh = ConnectHandler(**device)
+# enter privileged exec mode
+ssh.enable()
+# commands that the script needs to run
+commands = ('configure terminal','hostname R1','exit')
+# these lines will ensure the expected outcome is achieved
+output = ssh.send_config_set(commands)
+output = ssh.send_command('show running-config')
+# saves the running-config to local file
+with open('running-config-file.txt', 'w') as run_config:
+    run_config.write(output)
+# close SSH connection
+ssh.disconnect
+
+# this function is to run telnet connection
+def telnet_connection():
+    # device parameters
+    device = { 
+        'device_type' : 'cisco_ios_telnet',
+        'host' : '192.168.56.101',
+        'username' : 'cisco',
+        'password' : 'cisco123!',
+        'secret' : 'class123!'}
+# establish telnet connection
+telnet = ConnectHandler(**device)
+# commands needed to run script
+commands = ['configure terminal', 'hostname R1', 'exit']
+# ensures the outcome is achieved
+telnet.send_config_set(commands)
+# closes telnet connection
+telnet.disconnect()
+# function will close script
+def exit_function():
+    print('Logging out of cisco router')
+    print('shutdown')
+# the menu screen 
+print('---Configuration Menu---')
+print('Welcome to the Cisco Router')
+print('Choose one of the following options: ')
+print('1: SSH Connection')
+print('2: Telnet Connection')
+print('3: exit')
+
+while true:
+    option = input('Please select an option: ')
+
+    if option =='1':
+        ssh_connection()
+        break
+    elif option =='2':
+        telnet_connection()
+        break
+    elif option =='3':
+        exit_function()
+        break
+    else:
+        print('Invalid option! Choose one of the options displayed on the screen')
+
