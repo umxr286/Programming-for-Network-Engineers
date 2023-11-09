@@ -1,0 +1,25 @@
+# import required modules/packages/library
+from pprint import pprint
+
+# create the outer list for all devices
+devices = []
+
+# open the file and read in the device info
+file = open('devices-04.txt', 'r')
+for line in file:
+
+    # add device info into tuple
+    device_info = tuple(line.strip().split(','))
+    # display what we have read and built so far
+    print('read line: ', device_info)
+    # append our device and its info onto our 'devices' list
+    devices.append(device_info)
+    # display a blank line to make easier to read
+    print('')
+    # display a title
+    print('input converted to a list tuples:')
+    # display the tuple with nice formatting
+    pprint(devices)
+    
+# close the file
+file.close()
