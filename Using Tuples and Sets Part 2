@@ -1,0 +1,24 @@
+# import required modules/packages/library
+from pprint import pprint
+
+# open the file and read in the single line of device info
+file = open('devices-05.txt', 'r')
+file_line = file.readline().strip()
+
+# display the line i just read
+print('read line: ', file_line)
+
+# convert to a tuple, using 'split()' to provide a python list
+device_info = tuple(file_line.split(','))
+
+# display a blank line to make easier to read
+print('')
+
+# display a title
+print('input converted to a tuple: ')
+
+# display the dictionary with nice formatting
+print(device_info)
+
+# close the file
+file.close()
