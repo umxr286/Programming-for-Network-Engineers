@@ -11,7 +11,7 @@ def read_device_info(devices_list):
     
     # close the file
     file.close()
-print('Line 14')
+
 # function to go through devices displaying them in table
 def print_device_info(list_of_devices):
 
@@ -43,4 +43,3 @@ read_device_info(devices_file)
 
 # display information
 print_device_info(devices_list)
-print('Line 46')
