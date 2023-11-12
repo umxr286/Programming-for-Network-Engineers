@@ -1,0 +1,28 @@
+import difflib
+from difflib import SequenceMatcher
+
+# read the file
+open = ''
+# this function is to run SSH connection
+def ssh_connection():
+    # device parameters
+    host_one = {
+        'device_type' : 'cisco_ios',
+        'host' : '192.168.56.101',
+        'username' : 'cisco',
+        'password' : 'cisco123!',
+        'secret' : 'class123!'}
+# establishes SSH connection
+ssh = ConnectHandler(host_one)
+# enter privileged exec mode
+ssh.enable()
+# commands that the script needs to run
+commands = ('configure terminal','hostname R1','exit')
+# these lines will ensure the expected outcome is achieved
+output = ssh.send_config_set(commands)
+output = ssh.send_command('show running-config')
+# saves the running-config to local file
+with open('running-config-file.txt', 'w') as run_config:
+    run_config.write(output)
+# close SSH connection
+ssh.disconnect
