@@ -1,0 +1,17 @@
+from difflib import SequenceMatcher
+
+file_one = open("running-config-file.txt", 'r')
+file_two = open("devices-08.txt", 'r')
+
+file_one_lines = file_one.readlines()
+file_two_lines = file_two.readlines()
+
+for i in range(len(file_one_lines)):
+    if file_one_lines[i] != file_two_lines[i]:
+        print("Line" + str(i+1) + "doesn't match.")
+        print("---------------------------------------------------")
+        print("file_one: " + file_one_lines[i])
+        print("file_2: " + file_two_lines[i])
+file_one.close()
+file_two.close()
+
