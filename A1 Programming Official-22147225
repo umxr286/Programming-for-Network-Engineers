@@ -4,7 +4,7 @@ def ssh_connection():
     # device parameters
     device = {
         'device_type' : 'cisco_ios',
-        'host' : '192.168.56.101',
+        'device' : '192.168.56.101',
         'username' : 'cisco',
         'password' : 'cisco123!',
         'secret' : 'class123!',
@@ -29,7 +29,7 @@ def telnet_connection():
     # device parameters
     device = { 
         'device_type' : 'cisco_ios',
-        'host' : '192.168.56.101',
+        'device' : '192.168.56.101',
         'username' : 'cisco',
         'password' : 'cisco123!',
         'secret' : 'class123!'}
