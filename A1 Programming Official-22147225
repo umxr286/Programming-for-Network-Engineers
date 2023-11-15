@@ -3,7 +3,7 @@ from netmiko import ConnectHandler
 def ssh_connection():
     # device parameters
     device = {
-        'device_type' : 'cisco_ios_SSH',
+        'device_type' : 'cisco_ios',
         'host' : '192.168.56.101',
         'username' : 'cisco',
         'password' : 'cisco123!',
@@ -28,7 +28,7 @@ ssh.disconnect
 def telnet_connection():
     # device parameters
     device = { 
-        'device_type' : 'cisco_ios_telnet',
+        'device_type' : 'cisco_ios',
         'host' : '192.168.56.101',
         'username' : 'cisco',
         'password' : 'cisco123!',
