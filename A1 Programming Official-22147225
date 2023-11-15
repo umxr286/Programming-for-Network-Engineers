@@ -53,7 +53,7 @@ print('1: SSH Connection')
 print('2: Telnet Connection')
 print('3: exit')
 
-while true:
+while True:
     option = input('Please select an option: ')
 
     if option =='1':
