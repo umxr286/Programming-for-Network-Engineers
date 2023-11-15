@@ -1,8 +1,11 @@
 import difflib
 from difflib import SequenceMatcher
 
-# read the file
-open = ''
+# open file for reading
+file = open('running-config-file.txt', 'r')
+# open file for reading
+file = open('startup-config-file.txt', 'r')
+
 # this function is to run SSH connection
 def ssh_connection():
     # device parameters
