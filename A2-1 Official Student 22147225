@@ -11,6 +11,6 @@ for i in range(len(file_one_lines)):
         print("Line" + str(i+1) + "doesn't match.")
         print("---------------------------------------------------")
         print("file_one: " + file_one_lines[i])
-        print("file_2: " + file_two_lines[i])
+        print("file_two: " + file_two_lines[i])
 file_one.close()
 file_two.close()
