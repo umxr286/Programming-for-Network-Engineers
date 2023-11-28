@@ -1,0 +1,4 @@
+en 
+config t
+router ospf 192
+network 192.168.56.1 0.0.0.0
