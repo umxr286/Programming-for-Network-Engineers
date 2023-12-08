@@ -1,4 +1,6 @@
 en 
 config t
 router ospf 192
-network 192.168.56.1 0.0.0.0
+network 192.168.56.1 0.0.0.3 area 20
+area 20 authentication
+exit
