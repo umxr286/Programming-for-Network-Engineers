@@ -12,14 +12,20 @@ with open('devices.txt') as f:
 
 for devices in devices_list:
     print('Connecting to device' + devices)
-    ip_address_of_device = devices
+    '192.168.56.101' = devices
     ios_device = {
         'device_type' : 'cisco_ios',
-        'ip'  : ip_address_of_device,
-        'username'  : username,
-        'password'  : password
+        'host'  : '192.168.56.101,
+        'username'  : 'prne',
+        'password'  : 'cisco123!'
     }
 
 net_connect = ConnectHandler(**ios_device)
 output = net_connect.send_config_set(commands_list)
 print(output)
+
+# close the connection
+net_connect.disconnect()
+print('-------------------------------------------')
+print('----- Loopback is Success! ----------------')
+print('-------------------------------------------')
