@@ -1,0 +1,64 @@
+from getpass import getpass
+from netmiko import ConnectHandler
+
+ip_address = '192.168.56.101'
+username = input('Enter your SSH username: ')
+password = getpass()
+
+with open('commands.txt') as f:
+    commands_list = f.read().splitlines()
+
+with open('devices.txt') as f:
+    devices_list = f.read().splitlines()
+
+for devices in devices_list:
+    print('Connecting to device' + devices)
+    devices = '192.168.56.101'
+    ios_device = {
+        'device_type' : 'cisco_ios',
+        'host'  : '192.168.56.101',
+        'username'  : 'prne',
+        'password'  : 'cisco123!'
+    }
+
+    net_connect = ConnectHandler(**ios_device)
+    output = net_connect.send_config_set(commands_list)
+    print(output)
+
+#check for error, if exists then display error and exit
+if print != 0:
+   print('------------------------------------------')
+   print('--- FAILURE! Loopback has Failed----------')
+   print('------------------------------------------')
+   print()
+
+# the menu screen 
+print('---Configuration Menu---')
+print('Welcome to the Cisco Router')
+print('Choose one of the following options: ')
+print('1: Command Connection')
+print('2: Device Connection')
+print('3: exit')
+
+while True:
+    option = input('Please select an option: ')
+
+    if option =='1':
+        commands_list()
+        break
+    elif option =='2':
+        devices_list()
+        break
+    else:
+        print('Invalid option! Choose one of the options displayed on the screen')
+
+    net_connect = ConnectHandler(**ios_device)
+    output = net_connect.send_config_set(commands_list)
+    print(output)
+
+# close the connection
+    net_connect.disconnect()
+print('-------------------------------------------')
+print('----- Loopback is Success! ----------------')
+print('-------------------------------------------')
+print()
